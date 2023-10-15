@@ -79,7 +79,6 @@ class DBInitializer:
         """Preprocess csv file and returns pandas dataframe"""
         # Read csv file as dataframe.
         df = pd.read_csv(csv_file_path)
-        
         # Change the datframe values into the desired shape/type. 
         df['High']   = self._preprocess_price_value(df['High'])
         df['Open']   = self._preprocess_price_value(df['Open'])
@@ -115,7 +114,7 @@ class DBInitializer:
                 elif str(dtype) == 'float64':
                     column_type = 'REAL'
                 else:
-                    column_type = 'TEXT'
+                    column_type = 'TEXT' # Could be changed to DATE.
                 create_table_query += f"{column_name} {column_type}, "
             create_table_query = create_table_query.rstrip(', ') + ");"
 
